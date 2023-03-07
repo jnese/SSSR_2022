@@ -4,7 +4,7 @@ author: "Joseph F. T. Nese, Ph.D.<br>University of Oregon<br>jnese@uoregon.edu"
 bibliography: references.bib
 csl: ieee.csl
 format:
-  beamer:
+  revealjs:
     self-contained: true
     embed-resources: true
     slide-number: true
@@ -284,7 +284,7 @@ Mean *CSEM* of CORE was about 5 to 7 and a half
 ### We found
 
 ```{r}
-tble2 <- rio::import("C:/Users/jnese/Desktop/BRT/GRANT-CORE/Project/Publications/sem_comparison/sem_comparison/data/table2.rds")
+tble2 <- rio::import(here::here("no_publish", "table2.rds"))
 
 tble2 %>% 
   relocate(`Mean CSEM`, .after = everything()) %>% 
@@ -345,7 +345,7 @@ AERA Open, 2022
 ---
 
 ```{r}
-readr::read_rds("C:/Users/jnese/Desktop/BRT/GRANT-CORE/Project/Publications/consequential_validity_study/consequential_validity_paper/nopublish/figmeans_sssr2022.rds") %>% 
+readr::read_rds(here::here("no_publish", "figmeans_sssr2022.rds")) %>% 
   ggplot(aes(time, wcpm_mean, color = measure, group = measure)) +
   geom_point(size = 2) +
   geom_line(size = 1) +

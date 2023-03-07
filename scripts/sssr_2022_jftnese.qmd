@@ -4,8 +4,9 @@ author: "Joseph F. T. Nese, Ph.D.<br>University of Oregon<br>jnese@uoregon.edu"
 bibliography: references.bib
 csl: ieee.csl
 format:
-  revealjs:
+  beamer:
     self-contained: true
+    embed-resources: true
     slide-number: true
     show-slide-number: all
     theme: simple
@@ -250,7 +251,7 @@ Model-based WCPM scores
 ```{r}
 #| column: page
 
-tble1 <- rio::import("C:/Users/jnese/Desktop/BRT/GRANT-CORE/Project/Publications/sem_comparison/sem_comparison/data/table1.rds") %>% 
+tble1 <- rio::import(here::here("no_publish", "table1.rds")) %>% 
   mutate(stat = ifelse(str_detect(`CBM-R`, "Model-based"), "CSEM", "SEM"))
 
 tble1 %>%

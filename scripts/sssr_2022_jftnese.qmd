@@ -1,0 +1,521 @@
+---
+title: "A Summary of An Effort to Improve the Practical and Psychometric Properties of Traditional ORF"
+author: "Joseph F. T. Nese, Ph.D.<br>University of Oregon<br>jnese@uoregon.edu"
+bibliography: references.bib
+csl: ieee.csl
+format:
+  revealjs:
+    self-contained: true
+    slide-number: true
+    show-slide-number: all
+    theme: simple
+    reference-location: document
+---
+
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(gt)
+library(knitr)
+library(kableExtra)
+library(MetBrewer)
+```
+
+## CORE
+
+[**Computerized Oral Reading Evaluation**](https://jnese.github.io/core-blog/)
+
+CORE is a computerized ORF assessment framework that combines multiple shorter passages, automatic speech recognition (ASR) for scoring, and a latent variable psychometric model to produce model-based WCPM scores 
+
+Institute of Education Sciences Grant [R305A140203](https://ies.ed.gov/funding/grantsearch/details.asp?ID=1492)
+
+Three CORE research studies
+
+## Purpose
+
+1) Why?
+2) How?
+3) What?
+4) Where?
+
+::: {.notes}
+WHY - advantages and limitations of traditional ORF. Why it is important to keep, and why it is important to change
+
+HOW - How we approached the limitations of ORF
+
+WHAT - What we wanted to know and what we found in these three research studies
+
+WHERE - Where are we going from here
+:::
+
+## Traditional ORF Assessment
+
+- a student reads aloud for 1 min (passage ~250 words)
+- an assessor marks each word the student reads incorrectly (including omissions) 
+- **WCPM** - outcome is **w**ords read **c**orrectly **p**er **m**inute (total words - incorrect words) 
+
+## Advantages
+
+- essential part of reading proficiency [@nrp2000]
+- used in classrooms across the U.S.
+- quick for one student
+- indicator of reading comprehension & general reading achievement [@fuchs2001; @good2019; @jenkins2003; @nese2011; @schilling2007; @shin2019]
+
+::: {.notes}
+National Reading Panel
+:::
+
+## Limitations
+
+(1) opportunity cost (not quick for many students) [@hoffman2009]
+(2) administration errors [@cummings2014; @munir2012; @reed2014; @reed2013]
+(3) passage inequivalence [@francis2008]
+(4) score reliability and precision [@christ2007; @poncy2005]
+(5) consequential validity [@shapiro2012]
+
+::: {.notes}
+ADMIN ERRORS - forgetting to start the timer, not stopping the student or circling the last word when the timer sounded, miscounting the number of errors, and miscalculating the WCPM
+
+INEQUIVALENCE - WCPM scores vary substantially across passages; "readability"
+
+RELIABILITY - large standard error around scores, sometimes more than within-year growth expectations
+:::
+
+## Limitations 1 & 2
+
+(1) opportunity cost
+(2) administration errors
+
+#### Approach: <u>**ASR**</u>
+
+- groups (or entire classrooms) to be assessed at one time with one educator
+- standardized delivery, setting, & scoring 
+  + timing the reading for exactly 60 s
+  + accurately calculating WCPM 
+  + recording the correct WCPM score
+  
+# Study 1
+
+<p style="text-indent: -36px; padding-left: 36px">
+Nese, J. F. T., & Kamata, A. (2021). Evidence for automated scoring and shorter passages of CBM-R in early elementary school. *School Psychology, 36*, 47-59. doi: [10.1037/spq0000415](https://psycnet.apa.org/doiLanding?doi=10.1037%2Fspq0000415)
+</p>
+
+::: {.notes}
+School Psychology, 2021
+:::
+
+## What we did
+
+902 students across Grades 2-4 (from 4 schools)
+
+Read 13,766 passages
+
+- 1 Traditional ORF passage (easyCBM)
+- 14-18 CORE passages
+  + 25-85 words in length (short, medium, long)
+
+Scored by:
+
+- Traditional (human)
+- ASR
+- Criterion (human)
+
+::: {.notes}
+linear mixed-effect model (LMM) with students and passages as random effects separate for each grade and each outcome (time recorded and WCPM) - 6 models
+Calculated pairwise differences (in time and WCPM) based on the estimated marginal means of the mixed-effect models
+:::
+
+## We wanted to know
+
+1) Do WCPM scores differ by passage *length* ($\times$ 4)?
+
+### We found
+
+None of the WCPM pairwise comparisons (across grades and scoring methods) between the traditional ORF passages and the shorter CORE passages were statistically significantly different.
+
+<br>
+
+<p style="color:#dd5129;">The shorter passages read in their entirety functioned similarly to the traditional ORF passages read for 1 min</p>
+
+## We also wanted to know
+
+2) Do **WCPM** scores differ by *scoring method* ($\times$ 3)?
+
+### We found
+
+Human criterion vs:
+
+- **ASR**: all 12 pairwise comparisons statistically different
+- **Traditional**: 8 of 12 pairwise comparisons statistically different
+
+<p style="color:#dd5129;">ASR <u>and</u> traditional scores were different from criterion scores, <u>but</u> most of these differences were below the "acceptable threshold"[@williamson2012]
+</p>
+
+::: {.notes}
+Williamson et al (2012) suggest a limit of 0.15 as an acceptable threshold for the standardized mean score difference between human scores and automated scores
+:::
+
+## We also _also_ wanted to know
+
+3) Do **word** scores differ by *scoring method*  ($\times$ 3)?
+
+### We found
+
+Average agreement rates between the human criterion and:
+
+- **Traditional**: .97 to .99
+- **ASR**:  .81 to .94 (all but one > .87)
+
+<p style="color:#dd5129;">Human-to-ASR degradation from the human-to-human score agreement was generally below the "acceptable threshold" [@williamson2012]
+</p>
+
+::: {.notes}
+Calculated percent of words in each passage that were scored in agreement
+
+Williamson et al. (2012) suggest that degradation between human-to-human and human-to-ASR agreement should not be more than .10
+:::
+
+## Conclusions
+
+- Shorter passages can be used for ORF assessment
+- ASR can be used to score ORF assessment
+  + ASR applied here is now 6+ years old
+
+::: {.notes}
+ASR is not the innovation of this project. Many vendors, such as Soapbox, are doing work in this space, and is becoming increasing popular in ed assessment. I believe the true contribution of this project is what I will talk about from here out.
+:::
+
+# Model-based WCPM
+
+<p style="text-indent: -36px; padding-left: 36px">
+Kara, Y., Kamata, A., Potgieter, C., & Nese, J. F. T. (2020). Estimating model-based oral reading fluency: A Bayesian approach. *Educational and Psychological Measurement, 80*, 847-869. doi: [10.1177/0013164419900208](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7425326/)
+</p>
+
+::: {.notes}
+EPM 2020
+:::
+
+## Model-based WCPM 
+
+- Two-part latent-variable psychometric model
+- Passages equated, horizontally scaled, and vertically linked
+  + scores on a common scale, especially useful for progress monitoring
+- Same metric as traditional ORF scores (i.e., WCPM)
+  + immediately usable for teachers and reading specialists 
+- *SE*s computed for each WCPM score (*CSEM*)
+
+## Limitations 3 & 4
+
+(3) passage inequivalence
+(4) score reliability and precision
+
+#### Approach: <u>Model-based WCPM (Kara et al., 2020)</u>
+
+Two-part latent-variable psychometric model (jointly modeled and estimated)
+
+(1) Accuracy - binomial-count factor model (number of passage words read correctly)
+(2) Speed - log-normal factor model (passage reading time)
+
+# Study 2
+<p style="text-indent: -36px; padding-left: 36px">
+Nese, J. F. T. & Kamata, A. (2021). Addressing the large standard error of traditional CBM-R: Estimating the conditional standard error of a model-based estimate of CBM-R. *Assessment for Effective Intervention, 47*, 53-58. doi: [10.1177/1534508420937801](https://journals.sagepub.com/doi/pdf/10.1177/1534508420937801)
+</p>
+
+::: {.notes}
+AEI, 2021 
+:::
+
+## What we did
+<br>
+1,021 students across Grades 2-4 (from 4 schools)
+
+Read 4,084 passages
+
+- 10 to 12 CORE passages (fixed sets randomly assigned)
+  + 50-85 words in length (medium or long)
+- Across 4 occasions (Oct, Nov, Feb, May)
+  
+Scored by ASR
+
+Model-based WCPM scores
+
+## We wanted to know
+
+1) Is the average conditional standard error of measurement (**_CSEM_**) for the model-based WCPM estimates smaller than the reported *SEM*s of traditional ORF systems?
+
+### We found
+
+```{r}
+#| column: page
+
+tble1 <- rio::import("C:/Users/jnese/Desktop/BRT/GRANT-CORE/Project/Publications/sem_comparison/sem_comparison/data/table1.rds") %>% 
+  mutate(stat = ifelse(str_detect(`CBM-R`, "Model-based"), "CSEM", "SEM"))
+
+tble1 %>%
+  mutate(`CBM-R` = recode(`CBM-R`,
+                          `Model-based WCPM Estimate` = "CORE Model-based WCPM")) %>% 
+  rename(`ORF Measure` = `CBM-R`) %>% 
+  select(-stat) %>% 
+  knitr::kable() %>% 
+  #kableExtra::kable_paper() %>%
+  kable_styling(font_size = 25) %>% 
+  pack_rows("SEM", 1, 4) %>%
+  pack_rows("CSEM", 5, 5) %>% 
+  row_spec(5, background = "#fab255")
+  # gt::gt() %>% 
+  # cols_align(
+  # align = "right",
+  # columns = everything()
+  # )
+```
+
+::: {.notes}
+*SEM*s of traditional systems (aimsweb, DIBELS, easyCBM, Fastbridge) ranged from about 7 and a half to 10 and a half
+Mean *CSEM* of CORE was about 5 to 7 and a half
+:::
+
+## We also wanted to know
+
+2) What about for students at/below the 25th percentile?
+
+### We found
+
+```{r}
+tble2 <- rio::import("C:/Users/jnese/Desktop/BRT/GRANT-CORE/Project/Publications/sem_comparison/sem_comparison/data/table2.rds")
+
+tble2 %>% 
+  relocate(`Mean CSEM`, .after = everything()) %>% 
+  knitr::kable(digits = 1) %>% 
+  kable_styling(font_size = 30) %>% 
+  column_spec(1, width = "10em") %>% 
+  column_spec(5, background = "#fab255")
+```
+
+::: {.notes}
+Mean CORE *CSEM* of CORE was about 3 to 5
+Compare this to *SEM*s of traditional systems (7.5 to 10.5), and it was less by a factor of 2 to 3
+:::
+
+## Conclusions
+
+Preliminary but promising evidence that the model-based WCPM scale scores can increase score reliability and precision
+
+- better identify students at risk of poor reading outcomes
+- better determine student responsiveness to intervention
+
+## Limitation 5
+
+(5) consequential validity
+
+#### Approach: <u>CORE vs. Traditional ORF</u>
+
+Apply ASR, real-world setting, and model-based WCPM scores and compare growth estimates and predictive performance to Traditional ORF assessment
+
+# Study 3
+
+<p style="text-indent: -36px; padding-left: 36px">
+Nese, J. F. T. (2022). Comparing the Growth and Predictive Performance of a Traditional Oral Reading Fluency Measure With an Experimental Novel Measure. *AERA Open, 8*, 1-19. doi: [10.1177/23328584211071112](https://journals.sagepub.com/doi/pdf/10.1177/23328584211071112)
+</p>
+
+::: {.notes}
+AERA Open, 2022
+:::
+
+## What we did
+<br>
+2,108 students across Grades 2-4 (7 schools)
+
+- across 4 occasions (Oct, Nov, Feb, May)
+- 10 to 12 CORE passages
+- 1 traditonal ORF (easyCBM)
+- all scored by ASR
+
+## We wanted to know
+<br>
+**CORE vs. Traditional ORF**
+
+1) Which has better within-year growth properties?
+
+- the standard error of the slope (*SEb*) estimates
+- the reliability of each measurement occasion
+
+---
+
+```{r}
+readr::read_rds("C:/Users/jnese/Desktop/BRT/GRANT-CORE/Project/Publications/consequential_validity_study/consequential_validity_paper/nopublish/figmeans_sssr2022.rds") %>% 
+  ggplot(aes(time, wcpm_mean, color = measure, group = measure)) +
+  geom_point(size = 2) +
+  geom_line(size = 1) +
+  geom_smooth(method = "lm", se = FALSE, size = .5) +
+  scale_color_manual(values=met.brewer("Egypt", 2)) +
+  theme_minimal() +
+  facet_wrap(~grade_core) +
+  labs(
+    x = "Time (months)",
+    y = "WCPM",
+    color = ""
+  ) +
+  theme(legend.position = "bottom",
+        legend.margin = margin(0,0,0,0),
+        legend.box.margin = margin(-10,-10,-10,-10))
+```
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+*Mean Standard Error of the Slope (_SEb_)*
+
+```{r}
+tibble::tribble(
+  ~Grade, ~`Mean SEb`,  ~SD, ~`Mean SEb`,    ~SD,     ~d,
+      2L,      2.82, 2.36,    "3.93", "3.04", "0.41",
+      3L,      2.88, 2.36,    "4.32", "3.38", "0.55",
+      4L,      3.16, 2.46,       "—",    "—",    "—"
+  ) %>% 
+  kable(align = c('l', rep('r', 5))) %>% 
+  kable_styling(font_size = 20, full_width = FALSE) %>% 
+#  kable_classic() %>%
+  add_header_above(c(" " = 1, "CORE" = 2, "Traditional" = 2, " " = 1)) %>% 
+  column_spec(c(2, 4, 6), background = "#fab255")
+```
+:::
+
+::: {.column width="50%"}
+*Reliability Estimates across Occasions*
+
+```{r}
+tibble::tribble(
+  ~Occasion, ~CORE, ~Traditional,     ~h,
+         1L,  ".91",        ".78", "0.36",
+         2L,  ".90",        ".83", "0.20",
+         3L,  ".84",        ".62", "0.52",
+         4L,  ".85",        ".86", "-0.03",
+         1L,  ".93",        ".79", "0.42",
+         2L,  ".86",        ".70", "0.39",
+         3L,  ".86",        ".74", "0.30",
+         4L,  ".84",        ".79", "0.11",
+         1L,  ".91",          "—",    "—",
+         2L,  ".87",          "—",    "—",
+         3L,  ".87",          "—",    "—",
+         4L,  ".82",          "—",    "—"
+  ) %>% 
+  kable(align = c('l', rep('r', 3))) %>% 
+  kable_styling(font_size = 20, full_width = FALSE) %>% 
+  add_header_above(c(" " = 1, "Reliability" = 2, " " = 1)) %>% 
+  pack_rows("Grade 2", 1, 4) %>%
+  pack_rows("Grade 3", 5, 8) %>% 
+  pack_rows("Grade 3", 9, 12) %>% 
+  column_spec(c(4), background = "#fab255")
+
+```
+:::
+
+::::
+
+::: {.notes}
+Note we could not successfully estimate the Grade 4 Traditional ORF model. 
+CORE had smaller standard error of slope: Cohen's *d* .41 and .55
+CORE had higher reliability across measurement occasions (except 1): Cohen's *h* .11 to .52 
+
+the SE of individual slope estimates, based on the latent intercept and slope factor scores as estimated by the LGM
+:::
+
+## We found
+
+Model-based CORE scores 
+
+- more precise individual slope parameter estimates
+- higher reliability at measurement occasions (LGM)
+- latent slope means measured with less variance
+
+### Conclusion
+
+<p style="color:#dd5129;">Model-based CORE scores may provide better data with which to make instructional decisions, such as risk status or responsiveness to instruction
+</p>
+
+::: {.notes}
+Model-based CORE scores may yield growth estimates better suited to monitoring student ORF growth, and may provide better data with which to make instructional decisions, such as risk status or responsiveness to instruction
+:::
+
+## We also wanted to know
+<br>
+**CORE vs. Traditional ORF**
+
+2) Which has better distal (fall) and proximal (spring) predictive performance:
+
+- spring comprehension scores (easyCBM) Grades 2-4
+- spring state reading test scores & proficiency Grades 3-4
+
+## We found
+
+Predictive framework, training/test data, 10-fold cross-validation, and OLS models
+
+Across all comparisons - grade, outcome, loss function, and distal and proximal predictors
+
+Model-based CORE scores:
+
+- lower *RMSE* 
+- higher $R^2$ , sensitivity, specificity, and *AUC*
+
+<p style="color:#dd5129;">Model-based CORE scores had a stronger relation with year-end reading comprehension and state reading test scores than traditional ORF scores
+</p>
+
+## Conclusion
+
+The **model-based CORE scores**, with a **stronger relation with important reading outcomes**, can potentially better help with **early identification** of at-risk students and potentially better help **monitor the ORF progress** of those at-risk students because the scores provide a **better estimate** of students’ current and prospective reading proficiency
+
+## Summary
+
+1) Evidence to support ASR scoring and shorter ORF passages [@nese2021asr]
+
+2) Model-based WCPM scale scores have a lower *CSEM*, better suited for screening and progress monitoring, and thus better educational decisions [@nese2021sem]
+
+3) CORE improved within-year growth properties and predictive performance, providing preliminary evidence for consequential assessment [@nese2022]
+
+::: {.notes}
+I hope I showed here that:
+
+ASR can help address opportunity costs, and administration errors
+
+shorter passages combined with the psychometric model can help with  passage inequivalence, score reliability and precision, and consequential validity 
+:::
+
+## Where are we going from here?
+
+[CORE + Prosody](https://jnese.github.io/coreprosody/)
+
+- Model-based ORF with accuracy, speed, **&** prosody
+- Prosody estimate with machine learning
+- Grant [R305A200018](https://ies.ed.gov/funding/grantsearch/details.asp?ID=3427)
+
+Computational Tools for Model-Based ORF
+
+- `R` package for model-based WCPM scores
+- "testlet" model (sentences within passages)
+- Grant [R305D200038](https://ies.ed.gov/funding/grantsearch/details.asp?ID=3410)
+
+## Acknowledgements
+<br>
+
+[Dr. Aki Kamata](https://www.smu.edu/simmons/About-Us/Directory/Education-Policy-Leadership/Kamata)
+
+[Dr. Cornelis Potgieter](https://cse.tcu.edu/mathematics/faculty-staff/view/nelis-potgieter)
+
+[Dr. Yusuf Kara](https://www.smu.edu/simmons/About-Us/Directory/Center-On-Research-Evaluation/Kara)
+
+## Questions?
+<br>
+<br>
+
+<a href = "mailto: abc@example.com">jnese@uoregon.edu</a>
+<br>
+<br>
+
+*[slides will be posted [here](https://jnese.github.io/coreprosody/dissemination.html)]*
+
+## References
+

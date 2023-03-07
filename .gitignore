@@ -1,3 +1,5 @@
+no_publish/*
+
 # History files
 .Rhistory
 .Rapp.history
